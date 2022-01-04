@@ -30,7 +30,8 @@ public class tp1_Abdelaziz {
             e.printStackTrace();
         }*/
 
-        //driver.quit();
+        driver.quit();
+
     }
 
     @Test
