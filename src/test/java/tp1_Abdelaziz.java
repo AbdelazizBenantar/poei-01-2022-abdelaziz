@@ -3,6 +3,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -17,8 +18,10 @@ public class tp1_Abdelaziz {
         WebElement buttonCookies = driver.findElement(By.id("sp-cc-accept"));
         buttonCookies.click();
     }
-
-
+    @AfterMethod
+    public void teardown(){
+        driver.quit();
+    }
     //Chercher la machine à raclette
     @Test
     public void test1(){
@@ -29,7 +32,7 @@ public class tp1_Abdelaziz {
        // driver.findElement(By.cssSelector(""));
        // driver.findElement(By.xpath("//*[@id='twotabsearchtextbox'"));
        // driver.findElement(By.xpath("//*[@name='field-keywords'"));
-       driver.quit();
+
     }
 
     @Test
@@ -45,6 +48,5 @@ public class tp1_Abdelaziz {
         WebElement firstPhoto = driver.findElement(By.cssSelector("[data-cel-widget='search_result_1']"));
         firstPhoto.click();
 
-        driver.quit();
-    }
+        }
 }
