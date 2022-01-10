@@ -19,12 +19,9 @@ public class ConfirmationAddToCartPage {
 
     public void openCartPage(){
         driver.findElement(consultCart).click();
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutConfirmAddToCart));
         wait.until(ExpectedConditions.visibilityOfElementLocated(orderConfirmation));
     }
+
 }
