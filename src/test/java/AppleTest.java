@@ -1,7 +1,4 @@
-import apple.BuyIphone13ProPage;
-import apple.Iphone13ProPage;
-import apple.IphonePage;
-import apple.MainPage;
+import apple.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -47,6 +44,12 @@ public class AppleTest {
         buyIphone13ProPage.selectIphone13ProMax();
         buyIphone13ProPage.selectBlueAlpin();
         buyIphone13ProPage.select256Go();
+        buyIphone13ProPage.noAppleTradeIn();
+        buyIphone13ProPage.addToCart();
+
+        ConfirmationAddToCartPage confirmationAddToCartPage = new ConfirmationAddToCartPage(driver);
+        confirmationAddToCartPage.openCartPage();
+
 
 
 
