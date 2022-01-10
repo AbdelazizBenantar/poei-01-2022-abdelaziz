@@ -21,6 +21,5 @@ public class IphonePage {
         // attendre que l'action soit finie
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutAppearIphone13ProPage));
         wait.until(ExpectedConditions.visibilityOfElementLocated(buyIphone13Pro));
-
     }
 }

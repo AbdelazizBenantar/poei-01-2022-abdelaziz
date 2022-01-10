@@ -1,3 +1,5 @@
+import apple.BuyIphone13ProPage;
+import apple.Iphone13ProPage;
 import apple.IphonePage;
 import apple.MainPage;
 import org.openqa.selenium.By;
@@ -37,6 +39,16 @@ public class AppleTest {
 
         IphonePage iphonePage = new IphonePage(driver);
         iphonePage.openIphone13ProPage();
+
+        Iphone13ProPage iphone13ProPage = new Iphone13ProPage(driver);
+        iphone13ProPage.buy();
+
+        BuyIphone13ProPage buyIphone13ProPage = new BuyIphone13ProPage(driver);
+        buyIphone13ProPage.selectIphone13ProMax();
+        buyIphone13ProPage.selectBlueAlpin();
+        buyIphone13ProPage.select256Go();
+
+
 
 
 
