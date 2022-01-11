@@ -18,11 +18,14 @@ public class MainPage {
         this.driver = driver;
     }
 
-    public void openIphonePage(){
+    public IphonePage openIphonePage(){
         driver.findElement(iphoneMenu).click();
         // attendre que l'action soit finie
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutAppearIphonePage));
         wait.until(ExpectedConditions.visibilityOfElementLocated(iphone13ProFigure));
+
+        IphonePage iphonePage = new IphonePage(driver);
+        return iphonePage;
 
     }
 }

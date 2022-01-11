@@ -21,10 +21,10 @@ public class AppleTest {
         driver.manage().window().maximize();
     }
 
-   /* @AfterMethod
+    @AfterMethod
     public void teardown() {
         driver.quit();
-    }*/
+    }
 
     @Test
     public void iphone13ProMax256GoBleuAlpinAddToCartPriceTest() {
@@ -38,28 +38,18 @@ public class AppleTest {
 
         //Act
         MainPage mainPage = new MainPage(driver);
-        mainPage.openIphonePage();
-
-        IphonePage iphonePage = new IphonePage(driver);
-        iphonePage.openIphone13ProPage();
-
-        Iphone13ProPage iphone13ProPage = new Iphone13ProPage(driver);
-        iphone13ProPage.buy();
-
-        BuyIphone13ProPage buyIphone13ProPage = new BuyIphone13ProPage(driver);
-        buyIphone13ProPage.selectIphone13ProMax();
-        buyIphone13ProPage.selectBlueAlpin();
-        buyIphone13ProPage.select256Go();
-        buyIphone13ProPage.noAppleTradeIn();
-        buyIphone13ProPage.addToCart();
-
-        ConfirmationAddToCartPage confirmationAddToCartPage = new ConfirmationAddToCartPage(driver);
-        confirmationAddToCartPage.openCartPage();
-
-        CartPage cartPage = new CartPage(driver);
+        CartPage cartPage = mainPage.openIphonePage()
+                .openIphone13ProPage()
+                .buy()
+                .selectIphone13ProMax()
+                .selectBlueAlpin()
+                .select256Go()
+                .noAppleTradeIn()
+                .addToCart()
+                .openCartPage();
 
 
-        //Assert
+     //Assert
         Assert.assertTrue(cartPage.getProductName(0).contains(expectedProductName));
         Assert.assertTrue(cartPage.getCartTotal(0).contains(expectedCartTotal));
         Assert.assertTrue(cartPage.getProductPrice(0).contains(expectedProductPrice));

@@ -16,10 +16,13 @@ public class IphonePage {
             this.driver = driver;
         }
 
-    public void openIphone13ProPage(){
+    public Iphone13ProPage openIphone13ProPage(){
         driver.findElement(iphone13ProFigure).click();
         // attendre que l'action soit finie
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutAppearIphone13ProPage));
         wait.until(ExpectedConditions.visibilityOfElementLocated(buyIphone13Pro));
+
+        Iphone13ProPage iphone13ProPage = new Iphone13ProPage(driver);
+        return iphone13ProPage;
     }
 }

@@ -11,7 +11,7 @@ public class BuyIphone13ProPage {
     WebDriver driver;
     By iphoneModelName = By.cssSelector("[data-autom='dimensionScreensize6_7inch']+label");
     By iphoneColor = By.cssSelector("[data-autom= 'dimensionColorsierrablue']+label");
-    By iphoneStorageCapacity = By.cssSelector("[data-autom= 'dimensionCapacity256gb']+label");
+    By iphoneStorageCapacity = By.cssSelector("[data-autom='dimensionCapacity256gb']+label");
     By iphoneToTrade = By.cssSelector("[data-autom='choose-noTradeIn']+label");
     By addIphoneToCart = By.cssSelector("[data-autom='add-to-cart']");
     By consultCart = By.cssSelector("[data-autom='proceed']");
@@ -28,61 +28,70 @@ public class BuyIphone13ProPage {
         this.driver = driver;
     }
 
-    public void selectIphone13ProMax(){
-        driver.findElement(iphoneModelName).click();
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    public BuyIphone13ProPage selectIphone13ProMax(){
+
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSelectIphoneModel));
-        wait.until(ExpectedConditions.elementToBeClickable(iphoneModelName));
-        }
-
-    public void selectBlueAlpin(){
-        driver.findElement(iphoneColor).click();
+        wait.until(ExpectedConditions.elementToBeClickable(iphoneModelName)).click();
         try {
             Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        return this;
+        }
+
+    public BuyIphone13ProPage selectBlueAlpin(){
+
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSelectIphoneColor));
-        wait.until(ExpectedConditions.elementToBeClickable(iphoneColor));
+        wait.until(ExpectedConditions.elementToBeClickable(iphoneColor)).click();
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return this;
     }
 
-    public void select256Go(){
-        driver.findElement(iphoneStorageCapacity).click();
+    public BuyIphone13ProPage select256Go(){
+
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSelectIphoneStorageCapacity));
+        wait.until(ExpectedConditions.elementToBeClickable(iphoneStorageCapacity)).click();
+
         try {
             Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSelectIphoneStorageCapacity));
-        wait.until(ExpectedConditions.elementToBeClickable(iphoneStorageCapacity));
+        return this;
     }
 
-    public void noAppleTradeIn(){
-        driver.findElement(iphoneToTrade).click();
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    public BuyIphone13ProPage noAppleTradeIn(){
+
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSelectNoTrade));
-        wait.until(ExpectedConditions.elementToBeClickable(iphoneToTrade));
-    }
+        wait.until(ExpectedConditions.elementToBeClickable(iphoneToTrade)).click();
 
-    public void addToCart(){
-        driver.findElement(addIphoneToCart).click();
         try {
             Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        return this;
+    }
+
+    public ConfirmationAddToCartPage addToCart(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutAddIphoneToCart));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(consultCart));
-        //wait.until(ExpectedConditions.elementToBeClickable(addIphoneToCart));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(addIphoneToCart)).click();
+
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        ConfirmationAddToCartPage confirmationAddToCartPage = new ConfirmationAddToCartPage(driver);
+        return confirmationAddToCartPage;
     }
 
 }

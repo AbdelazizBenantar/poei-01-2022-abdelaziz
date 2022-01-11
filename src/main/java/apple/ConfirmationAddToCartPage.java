@@ -17,11 +17,14 @@ public class ConfirmationAddToCartPage {
         this.driver = driver;
     }
 
-    public void openCartPage(){
+    public CartPage openCartPage(){
         driver.findElement(consultCart).click();
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutConfirmAddToCart));
         wait.until(ExpectedConditions.visibilityOfElementLocated(orderConfirmation));
+
+        CartPage cartPage = new CartPage(driver);
+        return cartPage;
     }
 
 }
