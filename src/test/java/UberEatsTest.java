@@ -31,6 +31,7 @@ public class UberEatsTest {
 
     @Test
     public void testOrderBurger() throws InterruptedException {
+
         //Arrange
         String restaurtAdress = "La Defense";
         String expectedCartItems = "1";
@@ -83,8 +84,10 @@ public class UberEatsTest {
 
     }
 
+
     @AfterMethod
     public void teardown(){
         driver.quit();
     }
+
 }
