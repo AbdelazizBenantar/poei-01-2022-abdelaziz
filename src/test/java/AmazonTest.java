@@ -1,4 +1,5 @@
 import amazon.*;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,18 +18,34 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class AmazonTest {
 
     WebDriver driver;
+    Logger log = LogManager.getLogger(AmazonTest.class);
 
 
 
     @BeforeMethod
     public void setup() {
-        driver = new ChromeDriver();
+       // driver = new ChromeDriver();
+        /*FATAL > ERROR > WARNING > INFO > DEBUG > TRACE
+        log.fatal("Fatal");
+        log.error("Error");
+        log.warn("Warning");
+        log.info("Abdelaziz was here");
+        log.debug("Debug");
+        log.trace("Trace");
+        */
+        log.debug("Chrome has started");
+
         driver.get("https://www.amazon.fr");
+        log.info("AmazonHP is opened");
         driver.manage().window().maximize();
-    /*    URL seleniumGridUrl = null;
+        log.trace("Th windows is maximized");
+        URL seleniumGridUrl = null;
         try {
             seleniumGridUrl = new URL("http://127.0.0.1:4444");
         } catch (MalformedURLException e) {
@@ -36,29 +53,37 @@ public class AmazonTest {
         }
         ChromeOptions chromeOptions = new ChromeOptions();
         driver = new RemoteWebDriver(seleniumGridUrl, chromeOptions);
-    */
+    
 
         // fermer cookies
         driver.findElement(By.id("sp-cc-accept")).click();
+        log.info("closed cookies windows");
     }
 
     @AfterMethod
     public void teardown() {
         driver.quit();
+        log.debug("Chrome was closed");
     }
 
     @Test
     public void hoverTest() {
         By buttonSelector =By.id("nav-link-accountList");
         WebElement button = driver.findElement(buttonSelector);
+        log.debug("The button was found");
         Actions hover = new Actions(driver);
 
         hover.moveToElement(button);
         hover.perform();
+        log.info("Mousse hover button");
 
         By myAccountSelector = By.cssSelector(" #nav-al-your-account .nav-title + a");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
-        wait.until(ExpectedConditions.elementToBeClickable(myAccountSelector)).click();
+
+        WebElement myAccountButton = wait.until(ExpectedConditions.elementToBeClickable(myAccountSelector));
+        myAccountButton.click();
+        log.info("my account page is opened");
+
 
         try {
             Thread.sleep(1000);
