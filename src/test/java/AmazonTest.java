@@ -53,7 +53,7 @@ public class AmazonTest {
         }
         ChromeOptions chromeOptions = new ChromeOptions();
         driver = new RemoteWebDriver(seleniumGridUrl, chromeOptions);
-    
+
 
         // fermer cookies
         driver.findElement(By.id("sp-cc-accept")).click();
